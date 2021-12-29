@@ -18,7 +18,7 @@ mongoose.connect(
   );
   app.use(express.json());
   app.get("/",(req,res)=>{
-    res.status(200).json("FlirtAid's Chatapp") ;
+    res.json("FlirtAid's Chatapp") ;
   })
   app.use("/api/conversations", conversationroute);
   app.use("/api/messages", messageroute);
