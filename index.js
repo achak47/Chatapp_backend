@@ -22,6 +22,6 @@ mongoose.connect(
   })
   app.use("/api/conversations", conversationroute);
   app.use("/api/messages", messageroute);
-  app.listen(3001, () => {
+  app.listen(process.env.PORT || 3001, () => {
     console.log("Backend server is running!");
   });
