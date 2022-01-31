@@ -2,7 +2,7 @@ const router = require("express").Router() ;
 const Conversation = require("../Models/Conversation");
 
 //new conversations
-router.post("/",(req,res)=>{
+router.post("/",async (req,res)=>{
    const result = await Conversation.findOne({members:{ $all: [req.body.receiverId , req.body.senderId] }})
         if(result) res.status(200).json("Added Conversation") ;
         else{
