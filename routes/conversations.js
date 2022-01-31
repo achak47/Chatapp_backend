@@ -53,6 +53,7 @@ router.post("/signal", async (req,res)=>{
             result.signal[1] = flag ;
             await result.save() ;
         }
+        res.status(200).json("Signal changed") ;
     }
     catch{
         res.status(500).json(err) ; 
