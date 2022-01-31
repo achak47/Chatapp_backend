@@ -1,7 +1,12 @@
 const mongoose = require('mongoose') ;
 const ConversationSchema = new mongoose.Schema({
-   members:[String]
-},{
+   members:[String] ,
+   signal:[{
+      type:Number,
+      default:0
+   }]
+},
+{
     writeConcern: {
        w: 'majority',
        j: true,
