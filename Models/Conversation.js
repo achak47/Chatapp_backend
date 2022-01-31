@@ -5,8 +5,7 @@ const ConversationSchema = new mongoose.Schema({
       type:[Number],
       default:[0,0]
    }
-},
-{
+},{
     writeConcern: {
        w: 'majority',
        j: true,
