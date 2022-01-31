@@ -4,7 +4,7 @@ const Conversation = require("../Models/Conversation");
 //new conversations
 router.post("/",(req,res)=>{
     var arr = [req.body.receiverId , req.body.senderId] ;
-    Conversation.find({"members":arr},(err,result)=>{
+    Conversation.find({members:{ $all: [req.body.receiverId , req.body.senderId] }},(err,result)=>{
         if(result.length>0) res.status(200).json("Added Conversation") ;
         else{
             new Conversation({
@@ -40,5 +40,14 @@ router.get("/find/:firstuserId/:seconduserId",async (req,res)=>{
    catch(err){
        res.status(500).json(err) ;
    }
+})
+//to change the signal 
+router.get("signal/:senderId/:receiverId", async (req,res)=>{
+    try{
+         
+    }
+    catch{
+        res.status(500).json(err) ; 
+    }
 })
 module.exports = router;
