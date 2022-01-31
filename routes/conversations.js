@@ -40,9 +40,15 @@ router.get("/find/:firstuserId/:seconduserId",async (req,res)=>{
    }
 })
 //to change the signal 
-router.get("signal/:senderId/:receiverId", async (req,res)=>{
+router.post("/signal", async (req,res)=>{
+    const {senderId,receiverId,flag} = req.body ;
     try{
-         
+        const result = await Conversation.findOne({members:{ $all: [req.body.receiverId , req.body.senderId] }})
+        if(result.members[0] == senderId)
+        {
+            result.signal[0] = flag ;
+            await result.save() ;
+        }
     }
     catch{
         res.status(500).json(err) ; 
